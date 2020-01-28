@@ -32,6 +32,11 @@ namespace TicketingApp
                             StreamReader sr = new StreamReader(fileName); 
                             while(!sr.EndOfStream)
                             {
+                                string line = sr.ReadLine();
+
+                                string[] arr = line.Split(',');
+
+                                Console.WriteLine($"TicketID: {arr[0]}");
 
                             }
                         }
