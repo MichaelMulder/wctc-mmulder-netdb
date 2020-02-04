@@ -66,15 +66,13 @@ namespace SleepData {
                 StreamReader sr = new StreamReader(file);
 
                 while(!sr.EndOfStream) {
-                    string[] fileData = sr.ReadLine().Split(',');
-
+                    string[] fileData = sr.ReadLine().Split(','); 
                    
                     string[] weeksData = fileData[0].Split('\n');
 
                     string[] weekhoursData = fileData[1].Split('\n');
 
                     List<DateTime> weekDates = convertWeeksToWeekDates(weeksData);
-                    Console.WriteLine(weekDates[0]);
                     int i = 0;
                     foreach(var week in weekDates) {
                         var dataHours = weekhoursData[i];
@@ -83,12 +81,11 @@ namespace SleepData {
                         i++;
                     }
 
-                    foreach(DictionaryEntry de in sleepData) {
-                        
-                    }
-
                 }
+
+                displayResults(sleepData);                
                                
+                sr.Close();
             }
 
             /**
@@ -117,6 +114,23 @@ namespace SleepData {
                     hours.Add(int.Parse(hour));
                 }
                 return hours;
+            }
+
+            /*
+             * display results to user
+             */
+            void displayResults(Dictionary<DateTime, List<int>> sleepData) {
+                
+                foreach (KeyValuePair<DateTime, List<int>> kvp in sleepData) {
+                    var date = kvp.Key;
+                    var hours = kvp.Value;
+                    Console.WriteLine($"  Week of {date:MMM}, {date:dd}, {date:yyyy}");
+                    Console.WriteLine($"{"Su",3} {"Mo",3} {"Tu",3} {"We", 3} {"Th", 3} {"Fr", 3} {"Sa", 3}");
+                    Console.WriteLine($"---------------------------"); 
+                    Console.WriteLine($"{hours[0],3} {hours[1],3} {hours[2],3} {hours[3], 3} {hours[4], 3} {hours[5], 3} {hours[6], 3}");
+                }
+
+
             }
 
         }
