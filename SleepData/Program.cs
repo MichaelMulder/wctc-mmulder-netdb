@@ -120,14 +120,21 @@ namespace SleepData {
              * display results to user
              */
             void displayResults(Dictionary<DateTime, List<int>> sleepData) {
+
                 
                 foreach (KeyValuePair<DateTime, List<int>> kvp in sleepData) {
+                    var total = 0;
+                    var avg = 0;
                     var date = kvp.Key;
                     var hours = kvp.Value;
+                    for(var i = 0; i < hours.Count; i++) { 
+                        total += hours[i];
+                    }
+                    avg += total / hours.Count;
                     Console.WriteLine($"  Week of {date:MMM}, {date:dd}, {date:yyyy}");
-                    Console.WriteLine($"{"Su",3} {"Mo",3} {"Tu",3} {"We", 3} {"Th", 3} {"Fr", 3} {"Sa", 3}");
+                    Console.WriteLine($"{"Su",3} {"Mo",3} {"Tu",3} {"We", 3} {"Th", 3} {"Fr", 3} {"Sa", 3} {"Total", 3} {"Avg", 3}");
                     Console.WriteLine($"---------------------------"); 
-                    Console.WriteLine($"{hours[0],3} {hours[1],3} {hours[2],3} {hours[3], 3} {hours[4], 3} {hours[5], 3} {hours[6], 3}");
+                    Console.WriteLine($"{hours[0],3} {hours[1],3} {hours[2],3} {hours[3], 3} {hours[4], 3} {hours[5], 3} {hours[6], 3} {total, 3} {avg, 3}");
                 }
 
 
