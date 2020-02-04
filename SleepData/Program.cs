@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections;
 
 namespace SleepData
 {
@@ -59,9 +60,72 @@ namespace SleepData
             }
             else if (resp == "2")
             {
-                // TODO: parse data file
-                
+                // TODO: parse data file into hash table
+                /*
+                 * Table structure
+                 * WeekKey              HoursSleptValue   
+                 * -------              ----------
+                 * DateTime             int[7]
+                 * 1/1/2020             8|9|6|10|12|8|7
+                 */
+
+                Hashtable sleepData = new Hashtable();
+
+                StreamReader sr = new StreamReader(file);
+
+                while(!sr.EndOfStream)
+                {
+                    string[] fileData = sr.ReadLine().Split(',');
+
+                   
+                    string[] weeksData = fileData[0].Split('\n');
+
+                    string[] weekhoursData = fileData[1].Split('\n');
+
+                    ArrayList weekDates = convertWeeksToWeekDates(weeksData);
+                    Console.WriteLine(weekDates[0]);
+                    int i = 0;
+                    foreach(var week in weekDates)
+                    {
+                        var dataHours = weekhoursData[i];
+                        var hours = weekHoursDataToArray(dataHours);
+                        sleepData.Add(week, hours);
+                        i++;
+                    }
+
+                }
+                               
             }
+
+            /**
+             * Convert a string array of weeks into an arraylist of DateTimes
+             */
+ 
+            ArrayList convertWeeksToWeekDates(string[] weeks) { 
+                var weekDates = new ArrayList();
+                foreach(var week in weeks) { 
+                    weekDates.Add(DateTime.Parse(week));
+                } 
+                
+                return weekDates; 
+            }
+
+            /**
+             * Turns a string of numbers seperated like 6|8|9
+             * into an arraylist of numbers 
+             */
+
+            ArrayList weekHoursDataToArray(string weekHours)
+            {
+                var hours = new ArrayList();
+                string[] dataHours;
+                dataHours = weekHours.Split('|');
+                foreach(var hour in dataHours) {
+                    hours.Add(int.Parse(hour));
+                }
+                return hours;
+            }
+
         }
     }
 }
