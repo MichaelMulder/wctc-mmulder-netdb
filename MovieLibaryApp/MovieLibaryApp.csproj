@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSVFileReader.cs" />
+    <Compile Include="CSVFileWriter.cs" />
+    <Compile Include="IfileReader.cs" />
+    <Compile Include="IfileWriter.cs" />
+    <Compile Include="Movie.cs" />
+    <Compile Include="MovieGenres.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
