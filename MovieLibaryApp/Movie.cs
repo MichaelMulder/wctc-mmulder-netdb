@@ -8,10 +8,9 @@ namespace MovieLibaryApp {
     class Movie {
         private int id;
         private string title;
-        private int year;
         private List<MovieGenres> genres;
 
-        public int Year { get => year; set => year = value; }
+        public int ID { get => id; set => id = value; } 
 
         public string Title { get => title; set => title = value; } 
 
