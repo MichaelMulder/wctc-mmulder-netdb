@@ -5,9 +5,20 @@ using System.IO;
 namespace MovieLibaryApp
 {
  class Program {
+
         static void Main(string[] args) {
             int choice = 0;
             string fileName = "movies.csv";
+
+
+            CSVFileReader fr = new CSVFileReader(true);
+
+            fr.readFromFile(fileName);
+
+            string[] headers = fr.Headers; 
+            var data = fr.Data; 
+
+            var movieList = dataToMovieList(data);
             while (choice != 3) {
 
                 Console.WriteLine("1) Search movies");
@@ -17,16 +28,9 @@ namespace MovieLibaryApp
 
                 
                 string input = Console.ReadLine();
-                CSVFileReader fr = new CSVFileReader(true);
 
-                choice = int.Parse(input);
+                choice = int.Parse(input); 
 
-                fr.readFromFile(fileName);
-                string[] headers = fr.Headers; 
-                var data = fr.Data; 
-
-
-                var movieList = dataToMovieList(data);
                 switch (choice) {
                     case 1:
                         Console.WriteLine("1) Search by title");
@@ -80,8 +84,10 @@ namespace MovieLibaryApp
 
                         break;
                     case 2: 
+                        CSVFileWriter fw = new CSVFileWriter();
                         var newMovie = new Movie();
-                        newMovie.ID = movieList.Count + 1;
+                        Random ran = new Random();
+                        newMovie.ID = movieList[movieList.Count - 1].ID;
                         Console.WriteLine("Enter the title of the Movie");
                         string movieTitle = Console.ReadLine();
                         newMovie.Title = movieTitle; 
@@ -89,7 +95,8 @@ namespace MovieLibaryApp
                         string movieGenres = Console.ReadLine();
                         newMovie.Genres = parseStringToMovieGenres(movieGenres); 
                         movieList.Add(newMovie);
-                        
+                        string[] newDataLine = movieToDataLine(newMovie);
+                        fw.writeToFile(newDataLine, fileName);
                         break;
                     case 3:
                         Environment.Exit(0);
@@ -143,7 +150,7 @@ namespace MovieLibaryApp
         }
         
         static string[] movieToDataLine(Movie movie) {
-            var genres = String.Join("|", movie.Genres.ToArray());
+            var genres = string.Join("|", movie.Genres.ToArray());
             string[] newDataLine = { movie.ID.ToString(), movie.Title, genres }; 
             return newDataLine;
         } 
