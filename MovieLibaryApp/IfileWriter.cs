@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace MovieLibaryApp {
     interface IfileWriter {
 
-        void writeToFile(string text, string fileName);
+        void writeToFile(string[] dataLine, string fileName);
     }
 }
