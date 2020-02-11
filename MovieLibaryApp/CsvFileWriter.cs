@@ -12,9 +12,11 @@ namespace MovieLibaryApp {
             try {
                 StreamWriter sw  = new StreamWriter(fileName, true);
                 string newLine = string.Join(",", dataLine);
-                sw.WriteLine("\n" + newLine);
+                sw.WriteLine(newLine);
+                sw.Close();
             } catch (Exception e) {
                 logger.Error(e.Message);
+                Console.WriteLine(e);
             }
         }
     }
