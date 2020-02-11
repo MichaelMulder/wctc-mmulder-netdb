@@ -6,13 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieLibaryApp {
-    class CSVFileWriter : IfileWriter {
-        public void writeToFile(string text, string fileName) {
+    class CSVFileWriter : IfileWriter { 
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        public void writeToFile(string[] dataLine, string fileName) {
             try {
                 StreamWriter sw  = new StreamWriter(fileName, true);
-                sw.WriteLine("\n" + text);
+                string newLine = string.Join(",", dataLine);
+                sw.WriteLine("\n" + newLine);
             } catch (Exception e) {
-                Console.WriteLine(e);
+                logger.Error(e.Message);
             }
         }
     }

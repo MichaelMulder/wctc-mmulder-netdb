@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace MovieLibaryApp {
     class CSVFileReader : IfileReader { 
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private bool headersAvaliable;
         private string[] headers;
         private List<string[]> data;
@@ -46,7 +47,8 @@ namespace MovieLibaryApp {
                     sr.Close();
                 }
             } catch(Exception e) {
-                Console.WriteLine(e); 
+
+                logger.Error(e.Message); 
             }
         }
 
