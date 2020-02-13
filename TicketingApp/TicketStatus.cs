@@ -1,6 +1,8 @@
-﻿enum TicketStatus {
-    Open,
-    Closed,
-    Pending,
-    Resolved
+﻿namespace TicketingApp {
+    enum TicketStatus {
+        Open,
+        Closed,
+        Pending,
+        Resolved
+    }
 }
