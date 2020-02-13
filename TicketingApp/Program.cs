@@ -5,16 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicketingApp
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace TicketingApp {
+    class Program {
+        static void Main(string[] args) {
             int choice = 0;
             string fileName = "Tickets.csv";
-            while (choice != 3)
-            {
+            while (choice != 3) {
                 Console.WriteLine("1) Read Data from file");
                 Console.WriteLine("2) Create file from data");
                 Console.WriteLine("3) Exit");
@@ -23,32 +19,27 @@ namespace TicketingApp
 
                 choice = int.Parse(input);
 
-                switch (choice)
-                {
+                switch (choice) {
                     case 1:
-                        if (File.Exists(fileName))
-                        {
+                        if (File.Exists(fileName)) {
                             StreamReader sr = new StreamReader(fileName);
                             // Read the first line and set it as the header for the data points
                             string[] headers = sr.ReadLine().Split(','); 
-                            while(!sr.EndOfStream)
-                            {
+                            while(!sr.EndOfStream) {
                                 string line = sr.ReadLine(); 
 
                                 string[] data = line.Split(',');
 
 
                                 int i = 0;
-                                foreach(var header in headers)
-                                {
+                                foreach(var header in headers) {
                                     Console.WriteLine($"{header}: {data[i]}");
                                     i++; 
                                 } 
                             }
                             sr.Close();
                         }
-                        else
-                        {
+                        else {
                             Console.WriteLine("File does not exist");
                             Console.WriteLine(Directory.GetCurrentDirectory());
                         }

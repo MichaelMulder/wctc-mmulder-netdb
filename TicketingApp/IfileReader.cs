@@ -1,4 +1,4 @@
-﻿namespace MovieLibaryApp {
+﻿namespace TicketingApp {
     interface IfileReader {
         void readFromFile(string fileName);
     }
