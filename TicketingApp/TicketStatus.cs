@@ -3,6 +3,7 @@
         Open,
         Closed,
         Pending,
-        Resolved
+        Resolved,
+        Error // Only for notifying something went wrong with parsing
     }
 }

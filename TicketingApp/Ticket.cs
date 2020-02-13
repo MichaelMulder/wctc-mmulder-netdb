@@ -12,7 +12,7 @@ namespace TicketingApp {
         public Priority Priority { get; set; }
         public string Submitter { get; set; }
         public string Assgined { get; set; }
-        public string[] Watching { get; set; }
+        public List<string> Watching { get; set; }
 
     }
 }
