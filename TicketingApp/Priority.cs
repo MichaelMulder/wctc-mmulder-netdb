@@ -1,5 +1,7 @@
-﻿enum Priority {
-    High,
-    Medium,
-    Low
+﻿namespace TicketingApp {
+    enum Priority {
+        High,
+        Medium,
+        Low
+    }
 }

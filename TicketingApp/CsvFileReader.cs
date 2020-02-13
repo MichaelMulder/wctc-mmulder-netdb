@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 
-namespace MovieLibaryApp {
+namespace TicketingApp {
     class CSVFileReader : IfileReader { 
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private bool headersAvaliable;
