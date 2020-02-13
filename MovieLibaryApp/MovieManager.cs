@@ -14,11 +14,9 @@ namespace MovieLibaryApp {
         }
         public static Movie dataLineToMovie(string[] dataLine) { 
             var movie = new Movie();
-            for(int i = 0; i < dataLine.Length; i++) { 
-                movie.ID = int.Parse(dataLine[0]);
-                movie.Title = dataLine[1].ToLower();
-                movie.Genres = parseStringToMovieGenres(dataLine[2]);
-            }
+            movie.ID = int.Parse(dataLine[0]);
+            movie.Title = dataLine[1].ToLower();
+            movie.Genres = parseStringToMovieGenres(dataLine[2]);
             return movie;
         }
 
