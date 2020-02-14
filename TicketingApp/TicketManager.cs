@@ -15,12 +15,12 @@ namespace TicketingApp {
         public static Ticket dataLineToTicket(string[] dataLine) {
             var ticket = new Ticket();
             ticket.TicketID = int.Parse(dataLine[0]);
-            ticket.Summary = dataLine[1];
+            ticket.Summary = dataLine[1].ToLower();
             ticket.TicketStatus = parseStringToTicketStatus(dataLine[2]); // ticketStatus parser
             ticket.Priority = parseStringToPriorityStatus(dataLine[3]); // ticketPriority parser
-            ticket.Submitter = dataLine[4];
-            ticket.Assgined = dataLine[5];
-            ticket.Watching = dataLine[6].Split('|').ToList(); 
+            ticket.Submitter = dataLine[4].ToLower();
+            ticket.Assgined = dataLine[5].ToLower();
+            ticket.Watching = dataLine[6].ToLower().Split('|').ToList(); 
             return ticket;
         }
 
@@ -50,7 +50,7 @@ namespace TicketingApp {
             return newDataLine; 
         }
 
-        public List<Ticket> searchBySummary(string searchTerm) {
+        public List<Ticket> searchBySummary(string searchTerm) { 
             return this.TicketList.FindAll(t => t.Summary.StartsWith(searchTerm.ToLower()));
         }
 
