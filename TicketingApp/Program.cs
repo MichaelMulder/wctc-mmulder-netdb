@@ -98,7 +98,13 @@ namespace TicketingApp {
 
                             string status = Console.ReadLine();
 
+<<<<<<< HEAD
                             newTicket.TicketStatus = TicketManager.parseStringToTicketStatus(status);
+=======
+                                state.TicketList.Add(newTicket);
+
+                                context.Write(newTicket, bugTicketsFile);
+>>>>>>> c7b62d6... now adds to ticket list after getting newTicket data from user
 
                             Console.WriteLine("Enter priority of status(High, Medium, Low):");
 
@@ -110,6 +116,7 @@ namespace TicketingApp {
 
                             newTicket.Submitter = Console.ReadLine();
 
+<<<<<<< HEAD
                             Console.WriteLine("Who is assigned for this ticket:");
 
                             newTicket.Assgined = Console.ReadLine();
@@ -157,6 +164,132 @@ namespace TicketingApp {
                     ticketPage = ticketList.Skip(pageSize * pageCounter).Take(pageSize).ToList();
                 } else if (input == ConsoleKey.Q) {
                     break;
+=======
+
+                                Console.WriteLine("Enter priority of status(High, Medium, Low):");
+
+                                string sPriority = Console.ReadLine(); 
+
+                                Console.WriteLine("Who is summiting this ticket:");
+
+                                string submitter = Console.ReadLine();
+
+                                Console.WriteLine("Who is assigned for this ticket:");
+
+                                string assgined = Console.ReadLine();
+
+                                Console.WriteLine("Who is watching this ticket(seperated by |):");
+                                string watchers = Console.ReadLine();
+
+                                Console.WriteLine("What is the software:");
+                                string software = Console.ReadLine();
+
+                                Console.WriteLine("What is the cost (ex. 1.00)");
+                                string sCost = Console.ReadLine();
+
+                                Console.WriteLine("What is the reason");
+                                string reason = Console.ReadLine(); 
+
+                                Console.WriteLine("What is the estimate");
+                                string estimate = Console.ReadLine(); 
+
+                                var newETicket = new EnhancementTicket {
+                                    TicketID = state.TicketList[listLength - 1].TicketID + 1,
+                                    Summary = summary.ToLower(),
+                                    TicketStatus = Enum.TryParse(status, out TicketStatus ticketStatus) ? ticketStatus : TicketStatus.Error, // ticketStatus parser
+                                    Priority = Enum.TryParse(sPriority, out Priority priority) ? priority : Priority.Error, // ticketPriority parser
+                                    Submitter = submitter.ToLower(),
+                                    Assgined = assgined.ToLower(),
+                                    Watching = watchers.ToLower().Split('|').ToList(),
+                                    Software = software.ToLower(),
+                                    Cost = decimal.TryParse(sCost, out decimal cost) ? cost : 0,
+                                    Reason = reason.ToLower(),
+                                    Estimate = estimate.ToLower()
+                                };
+
+
+                                state.TicketList.Add(newETicket);
+
+                                context.Write(newETicket, enhancmentTicketsFile); 
+
+                                break;
+                            case 3:
+                                break;
+                        }
+                        break;
+                    case 3: 
+                        state = new TaskTicketState(); 
+                        context.ChangeState(state);
+                        context.Read(TaskTicketsFile);
+                        Console.WriteLine(Menu.displayTicketMenu());
+                        int taskTicketChoice = Menu.getInput();
+                        switch(taskTicketChoice) {
+                            case 1:
+                                Console.WriteLine(Menu.displaySearchMenu());
+                                int searchChoice = Menu.getInput();
+                                Menu.displayResults(context.Search(searchChoice));
+                                break;
+                            case 2:
+                                var listLength = state.TicketList.Count; 
+
+                                Console.WriteLine("Write summary for ticket:");
+
+                                string summary = Console.ReadLine();
+
+                                Console.WriteLine("Enter status of ticket(Open, Closed, Pending, Resovled):");
+
+                                string status = Console.ReadLine();
+
+
+                                Console.WriteLine("Enter priority of status(High, Medium, Low):");
+
+                                string sPriority = Console.ReadLine(); 
+
+                                Console.WriteLine("Who is summiting this ticket:");
+
+                                string submitter = Console.ReadLine();
+
+                                Console.WriteLine("Who is assigned for this ticket:");
+
+                                string assgined = Console.ReadLine();
+
+                                Console.WriteLine("Who is watching this ticket(seperated by |):");
+                                string watchers = Console.ReadLine();
+
+                                Console.WriteLine("What is the Task Name:");
+                                string taskName = Console.ReadLine();
+
+                                Console.WriteLine("What is the Due Date:");
+                                string dueDate = Console.ReadLine();
+
+
+
+
+                                var newTaskTicket = new TaskTicket {
+                                    TicketID = state.TicketList[listLength - 1].TicketID + 1,
+                                    Summary = summary.ToLower(),
+                                    TicketStatus = Enum.TryParse(status, out TicketStatus ticketStatus) ? ticketStatus : TicketStatus.Error, // ticketStatus parser
+                                    Priority = Enum.TryParse(sPriority, out Priority priority) ? priority : Priority.Error, // ticketPriority parser
+                                    Submitter = submitter.ToLower(),
+                                    Assgined = assgined.ToLower(),
+                                    Watching = watchers.ToLower().Split('|').ToList(),
+                                    TaskName = taskName.ToLower(),
+                                    DueDate = dueDate.ToLower()
+                                };
+
+
+                                state.TicketList.Add(newTaskTicket);
+                                context.Write(newTaskTicket, TaskTicketsFile); 
+
+                                break;
+                            case 3:
+                                break;
+                        }
+                        break;
+                    case 4:
+                        Environment.Exit(0);
+                        break;
+>>>>>>> c7b62d6... now adds to ticket list after getting newTicket data from user
                 }
             }
 
