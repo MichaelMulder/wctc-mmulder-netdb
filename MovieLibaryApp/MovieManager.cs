@@ -66,7 +66,7 @@ namespace MovieLibaryApp {
             return  this.movieList.FindAll(m => m.Genres.Contains(genre)); 
         }
 
-        public bool TitleIsVaild(string title) { 
+        public bool TitleExists(string title) { 
             return this.movieList.Exists(m => m.Title.Contains(title.ToLower())); 
         }
     }
