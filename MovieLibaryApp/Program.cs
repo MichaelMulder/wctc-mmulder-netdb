@@ -93,11 +93,12 @@ namespace MovieLibaryApp
                             newMovie.ID = movieList[movieList.Count - 1].ID + 1;
                             Console.WriteLine("Enter the title of the Movie");
                             string movieTitle = Console.ReadLine();
-                            if (movieM.TitleIsVaild(movieTitle)) {
+                            if (!movieM.TitleExists(movieTitle.ToLower())) {
                                 newMovie.Title = movieTitle;
+                                
                             } else {
-                                Console.WriteLine(movieTitle + "is already apart of the database enter a diffrent title");
-                                movieTitle = Console.ReadLine();
+                                Console.WriteLine(movieTitle + " is already apart of the database enter a diffrent title");
+                                break;
                             }
                             Console.WriteLine("Enter the genres of the Movie seperated by |");
                             string movieGenres = Console.ReadLine();
