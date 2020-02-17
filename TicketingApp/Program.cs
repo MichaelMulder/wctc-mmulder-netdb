@@ -98,13 +98,13 @@ namespace TicketingApp {
 
                             string status = Console.ReadLine();
 
-                            TicketManager.parseStringToTicketStatus(status);
+                            newTicket.TicketStatus = TicketManager.parseStringToTicketStatus(status);
 
                             Console.WriteLine("Enter priority of status(High, Medium, Low):");
 
                             string priority = Console.ReadLine();
 
-                            TicketManager.parseStringToPriorityStatus(priority);
+                            newTicket.Priority = TicketManager.parseStringToPriorityStatus(priority);
 
                             Console.WriteLine("Who is summiting this ticket:");
 
