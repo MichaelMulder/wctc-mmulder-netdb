@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
@@ -15,6 +16,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 >>>>>>> ab69512... added MovieLibary app
+=======
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourName", "YourName\YourName.csproj", "{8553C336-B342-423F-BC63-EE2DE15088B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseGPA", "CourseGPA\CourseGPA.csproj", "{B83AC96C-28CF-46D5-B989-B853D205CF3B}"
@@ -27,13 +34,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleepData", "SleepData\Slee
 EndProject
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ab69512... added MovieLibary app
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingApp", "TicketingApp\TicketingApp.csproj", "{4CFDC280-2817-4C58-A2D6-CD4973CC9521}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieLibaryApp", "MovieLibaryApp\MovieLibaryApp.csproj", "{E108C1D0-A412-4494-97FD-5B879AD86C7F}"
 EndProject
 <<<<<<< HEAD
+<<<<<<< HEAD
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +108,8 @@ Global
 =======
 =======
 >>>>>>> ab69512... added MovieLibary app
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,8 +149,11 @@ Global
 		{62015B44-7225-47D1-8C36-F6C8DD4C9BBB}.Release|x86.ActiveCfg = Release|x86
 		{62015B44-7225-47D1-8C36-F6C8DD4C9BBB}.Release|x86.Build.0 = Release|x86
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> c4ee9f5... Added all projects needed for class from NETDBProgramming
 =======
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
 		{4CFDC280-2817-4C58-A2D6-CD4973CC9521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4CFDC280-2817-4C58-A2D6-CD4973CC9521}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CFDC280-2817-4C58-A2D6-CD4973CC9521}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -160,6 +176,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3486DDDD-9D26-4E94-B84C-2B192A2C049C}
+<<<<<<< HEAD
 >>>>>>> ab69512... added MovieLibary app
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
 	EndGlobalSection
 EndGlobal

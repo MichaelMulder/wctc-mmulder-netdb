@@ -14,11 +14,15 @@ namespace MovieLibaryApp {
                 string newLine = string.Join(",", dataLine);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
                 sw.WriteLine(newLine);
                 sw.Close();
             } catch (Exception e) {
                 logger.Error(e.Message);
                 Console.WriteLine(e);
+<<<<<<< HEAD
 =======
                 sw.WriteLine("\n" + newLine);
             } catch (Exception e) {
@@ -31,6 +35,8 @@ namespace MovieLibaryApp {
                 logger.Error(e.Message);
                 Console.WriteLine(e);
 >>>>>>> 40a474f... Fixed file IO, refactored movieMethods to Movie Manager
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
             }
         }
     }
