@@ -13,14 +13,15 @@ namespace TicketingApp {
         }
 
         public static Ticket dataLineToTicket(string[] dataLine) {
-            var ticket = new Ticket();
-            ticket.TicketID = int.Parse(dataLine[0]);
-            ticket.Summary = dataLine[1].ToLower();
-            ticket.TicketStatus = parseStringToTicketStatus(dataLine[2]); // ticketStatus parser
-            ticket.Priority = parseStringToPriorityStatus(dataLine[3]); // ticketPriority parser
-            ticket.Submitter = dataLine[4].ToLower();
-            ticket.Assgined = dataLine[5].ToLower();
-            ticket.Watching = dataLine[6].ToLower().Split('|').ToList(); 
+            var ticket = new Ticket {
+                TicketID = int.Parse(dataLine[0]),
+                Summary = dataLine[1].ToLower(),
+                TicketStatus = parseStringToTicketStatus(dataLine[2]), // ticketStatus parser
+                Priority = parseStringToPriorityStatus(dataLine[3]), // ticketPriority parser
+                Submitter = dataLine[4].ToLower(),
+                Assgined = dataLine[5].ToLower(),
+                Watching = dataLine[6].ToLower().Split('|').ToList()
+            };
             return ticket;
         }
 
