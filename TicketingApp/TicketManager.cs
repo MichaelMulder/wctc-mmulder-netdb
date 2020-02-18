@@ -59,7 +59,7 @@ namespace TicketingApp {
         }
         
         public List<Ticket> searchByWatcher(string searchTerm) {
-            return this.TicketList.FindAll(t => t.Watching.Contains(searchTerm));
+            return this.TicketList.FindAll(t => t.Watching.Contains(searchTerm.ToLower()));
         }
         
 
@@ -73,8 +73,8 @@ namespace TicketingApp {
         }
 
         public List<Ticket> searchByProirity(string searchTerm) {
-            Priority priority = Enum.TryParse(searchTerm, out priority) ? priority : Priority.Error; 
-            return this.TicketList.FindAll(t => t.TicketStatus.Equals(priority));
+            Priority priority = Enum.TryParse(searchTerm, out priority) ? priority : Priority.Error;
+            return this.TicketList.FindAll(t => t.Priority.Equals(priority));
         }
 
     }
