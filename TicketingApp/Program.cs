@@ -52,7 +52,7 @@ namespace TicketingApp {
                                         displayResults(ticketM.searchBySummary(searchSummary), headers);
                                         break;
                                     case 2:
-                                        Console.WriteLine("Enter a Satus(Open, Colsed, Pending, Resolved):");
+                                        Console.WriteLine("Enter a Satus(Open, Closed, Pending, Resolved):");
                                         var searchSatus = Console.ReadLine();
                                         displayResults(ticketM.searchByStatus(searchSatus), headers);
 
