@@ -12,70 +12,95 @@ namespace TicketingApp {
             this.TicketList = ticketList;
         }
 
-        public static Ticket dataLineToTicket(string[] dataLine) {
-            var ticket = new Ticket {
-                TicketID = int.Parse(dataLine[0]),
-                Summary = dataLine[1].ToLower(),
-                TicketStatus = parseStringToTicketStatus(dataLine[2]), // ticketStatus parser
-                Priority = parseStringToPriorityStatus(dataLine[3]), // ticketPriority parser
-                Submitter = dataLine[4].ToLower(),
-                Assgined = dataLine[5].ToLower(),
-                Watching = dataLine[6].ToLower().Split('|').ToList()
-            };
-            return ticket;
-        }
+        public void readTicketList(int readChoice) {
+            CSVFileReader frB = new CSVFileReader(true); 
+            CSVFileReader frE = new CSVFileReader(true); 
+            CSVFileReader frT = new CSVFileReader(true);
 
-        public static List<Ticket> dataToTicketList(List<string[]> data) {
-            var ticketList = new List<Ticket>();
-            foreach(var dataLine in data) {
-                ticketList.Add(dataLineToTicket(dataLine));
+            frB.readFromFile("Tickets.csv");
+            frE.readFromFile("Enhancements.csv");
+            frT.readFromFile("Task.csv");
+
+            var bugTicketsData = frB.Data;
+            var enhancementTicketsData = frE.Data;
+            var taskTicketsData = frT.Data;
+
+            switch(readChoice) {
+                case 1: 
+                    TicketList = TicketParser.dataToTicketList(bugTicketsData, TicketType.BugTicket);
+                    break;
+                case 2:
+                    TicketList = TicketParser.dataToTicketList(enhancementTicketsData, TicketType.EnhancmentTicket);
+                    break;
+                case 3:
+                    TicketList = TicketParser.dataToTicketList(taskTicketsData, TicketType.TaskTicket);
+                    break;
             }
-            return ticketList;
+
+
+
+        }
+ 
+         
+
+        public static void addToTicketList(Ticket ticket) { 
+
+            CSVFileWriter fwB = new CSVFileWriter();
+            CSVFileWriter fwE = new CSVFileWriter();
+            CSVFileWriter fwT = new CSVFileWriter();
+
+            switch(ticket) {
+                case BugTicket bugTicket: 
+                    break;
+                case EnhancementTicket enhancementTicket:
+                    break;
+                case TaskTicket taskTicket:
+                    break;
+            }
+
         }
 
-        public static TicketStatus parseStringToTicketStatus(string stringToParse) {
-            TicketStatus ticketStatus; 
-            return Enum.TryParse(stringToParse, out ticketStatus) ? ticketStatus : TicketStatus.Error;
-        }
+        public List<Ticket> searchTicketList(int searchChoice) {
 
-        public static Priority parseStringToPriorityStatus(string stringToParse) {
-            Priority priority;
-            return Enum.TryParse(stringToParse, out priority) ? priority : Priority.Error;
-        }
-        
-        public static string[] ticketToDataLine(Ticket ticket) {
-            var watchers = string.Join("|", ticket.Watching.ToArray());
-            string[] newDataLine = { ticket.TicketID.ToString(), ticket.Summary, 
-                ticket.TicketStatus.ToString(), ticket.Priority.ToString(), ticket.Submitter, 
-                ticket.Assgined, watchers};
-            return newDataLine; 
-        }
+            SearchContex contex = new SearchContex();
+            var ticketList = TicketList;
 
-        public List<Ticket> searchBySummary(string searchTerm) { 
-            return this.TicketList.FindAll(t => t.Summary.StartsWith(searchTerm.ToLower()));
-        }
+            switch(searchChoice) { 
+                case 1: 
+                    Console.WriteLine("Enter a Summary:");
+                    contex.Strategy = new SummaryStrategy();
+                    var searchSummary = Console.ReadLine();
+                    return contex.DoSearch(searchSummary, ticketList);
+                case 2: 
+                    Console.WriteLine("Enter a Satus(Open, Closed, Pending, Resolved):");
+                    contex.Strategy = new StatusStrategy();
+                    var searchStatus = Console.ReadLine(); 
+                    return contex.DoSearch(searchStatus, ticketList);
+                case 3: 
+                    Console.WriteLine("Enter a Priority(High, Medium, Low):"); 
+                    contex.Strategy = new PriorityStrategy();
+                    var searchPriority = Console.ReadLine();
+                    return contex.DoSearch(searchPriority, ticketList);
+                case 4: 
+                    Console.WriteLine("Enter a Summiter:");
+                    contex.Strategy = new SubmitterStrategy();
+                    var searchSubmitter = Console.ReadLine(); 
+                    return contex.DoSearch(searchSubmitter, ticketList);
+                case 5: 
+                    Console.WriteLine("Enter an Assigned:"); 
+                    contex.Strategy = new AssginedStrategy();
+                    var searchAssigned = Console.ReadLine();
+                    return contex.DoSearch(searchAssigned, ticketList);
+                case 6: 
+                    Console.WriteLine("Enter a Watcher:"); 
+                    contex.Strategy = new WatcherStrategy();
+                    var searchWatcher = Console.ReadLine();
+                    return contex.DoSearch(searchWatcher, ticketList);
+                default: 
+                    Console.WriteLine("Please enter a number 1-7");
+                    return ticketList;
+            }
 
-        public List<Ticket> searchBySubmitter(string searchTerm) { 
-            return this.TicketList.FindAll(t => t.Submitter.StartsWith(searchTerm.ToLower()));
-        }
-        
-        public List<Ticket> searchByWatcher(string searchTerm) {
-            return this.TicketList.FindAll(t => t.Watching.Contains(searchTerm.ToLower()));
-        }
-        
-
-        public List<Ticket> searchByAssigned(string searchTerm) { 
-            return this.TicketList.FindAll(t => t.Assgined.StartsWith(searchTerm.ToLower()));
-        }
-
-        public List<Ticket> searchByStatus(string searchTerm) {
-            TicketStatus status = Enum.TryParse(searchTerm, out status) ? status : TicketStatus.Error;
-            return this.TicketList.FindAll(t => t.TicketStatus.Equals(status));
-        }
-
-        public List<Ticket> searchByProirity(string searchTerm) {
-            Priority priority = Enum.TryParse(searchTerm, out priority) ? priority : Priority.Error;
-            return this.TicketList.FindAll(t => t.Priority.Equals(priority));
         }
 
     }

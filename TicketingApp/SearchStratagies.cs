@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TicketingApp {
+    class SummaryStrategy : ISearchStrategy {
+        public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) { 
+            return ticketList.FindAll(t => t.Summary.StartsWith(searchTerm.ToLower()));
+        }
+    }
+    class SubmitterStrategy : ISearchStrategy {
+        public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) { 
+            return ticketList.FindAll(t => t.Submitter.StartsWith(searchTerm.ToLower()));
+        }
+    }
+    class WatcherStrategy : ISearchStrategy {
+        public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) { 
+            return ticketList.FindAll(t => t.Watching.Contains(searchTerm.ToLower()));
+        }
+    }
+    class AssginedStrategy : ISearchStrategy {
+        public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) {
+            return ticketList.FindAll(t => t.Assgined.StartsWith(searchTerm.ToLower()));
+        }
+    }
+    class PriorityStrategy : ISearchStrategy {
+        public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) {
+            Priority priority = Enum.TryParse(searchTerm, out priority) ? priority : Priority.Error;
+            return ticketList.FindAll(t => t.Priority.Equals(priority)); 
+        }
+    }
+    class StatusStrategy : ISearchStrategy {
+        public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) {
+            TicketStatus status = Enum.TryParse(searchTerm, out status) ? status : TicketStatus.Error;
+            return ticketList.FindAll(t => t.TicketStatus.Equals(status));
+        }
+
+    }
+}

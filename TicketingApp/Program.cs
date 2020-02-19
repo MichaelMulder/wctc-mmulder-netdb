@@ -49,33 +49,33 @@ namespace TicketingApp {
                                     case 1:
                                         Console.WriteLine("Enter a Summary:");
                                         var searchSummary = Console.ReadLine();
-                                        displayResults(ticketM.searchBySummary(searchSummary), headers);
+                                        displayResults(ticketM.searchBySummary(searchSummary));
                                         break;
                                     case 2:
                                         Console.WriteLine("Enter a Satus(Open, Closed, Pending, Resolved):");
                                         var searchSatus = Console.ReadLine();
-                                        displayResults(ticketM.searchByStatus(searchSatus), headers);
+                                        displayResults(ticketM.searchByStatus(searchSatus));
 
                                         break;
                                     case 3: 
                                         Console.WriteLine("Enter a Priority(High, Medium, Low):");
                                         var searchPriority = Console.ReadLine();
-                                        displayResults(ticketM.searchByProirity(searchPriority), headers);
+                                        displayResults(ticketM.searchByProirity(searchPriority));
                                         break;
                                     case 4:
                                         Console.WriteLine("Enter a Summiter:");
                                         var searchSubmitter = Console.ReadLine();
-                                        displayResults(ticketM.searchBySubmitter(searchSubmitter), headers);
+                                        displayResults(ticketM.searchBySubmitter(searchSubmitter));
                                         break;
                                     case 5:
                                         Console.WriteLine("Enter an Assigned:");
                                         var searchAssigned = Console.ReadLine();
-                                        displayResults(ticketM.searchByAssigned(searchAssigned), headers);
+                                        displayResults(ticketM.searchByAssigned(searchAssigned));
                                         break;
                                     case 6:
                                         Console.WriteLine("Enter a Watcher:");
                                         var searchWatcher = Console.ReadLine();
-                                        displayResults(ticketM.searchByWatcher(searchWatcher), headers);
+                                        displayResults(ticketM.searchByWatcher(searchWatcher));
                                         break;
                                     default: 
                                         Console.WriteLine("Please enter a number 1-7");
@@ -135,20 +135,44 @@ namespace TicketingApp {
                 }
             }
         }
-        static void displayResults(List<Ticket> ticketList, string[] headers) {
+        static void displayResults(List<Ticket> ticketList) {
             int pageSize = 3, pageCounter = 0; 
             var ticketPage = ticketList.Take(pageSize).ToList();
             while (ticketPage.Count() > 0) {
                 foreach (var ticket in ticketPage) {
                     var watchers = string.Join(", ", ticket.Watching.ToArray());
-                    Console.WriteLine($" {headers[0]}: {ticket.TicketID}");
-                    Console.WriteLine($"{headers[1]}: {ticket.Summary}");
-                    Console.WriteLine($"{headers[2]}: {ticket.TicketStatus}");
-                    Console.WriteLine($"{headers[3]}: {ticket.Priority}");
-                    Console.WriteLine($"{headers[4]}: {ticket.Submitter}");
-                    Console.WriteLine($"{headers[5]}: {ticket.Assgined}");
-                    Console.WriteLine($"{headers[6]}: {watchers}");
-                    Console.WriteLine("\n");
+                    if (ticket is BugTicket bugTicket) {
+                        Console.WriteLine($" TicketID: {bugTicket.TicketID}");
+                        Console.WriteLine($" Summary: {bugTicket.Summary}");
+                        Console.WriteLine($" Status: {bugTicket.TicketStatus}");
+                        Console.WriteLine($" Priority: {bugTicket.Priority}");
+                        Console.WriteLine($" Submitter: {bugTicket.Submitter}");
+                        Console.WriteLine($" Assgined: {bugTicket.Assgined}");
+                        Console.WriteLine($" Watchers: {watchers}");
+                        Console.WriteLine($" Severity: {bugTicket.Severity} ");
+                        Console.WriteLine("\n");
+                    }
+                    else if (ticket is EnhancementTicket enhancementTicket) {
+                        Console.WriteLine($" TicketID: {ticket.TicketID}");
+                        Console.WriteLine($" Summary: {ticket.Summary}");
+                        Console.WriteLine($" Status: {ticket.TicketStatus}");
+                        Console.WriteLine($" Priority: {ticket.Priority}");
+                        Console.WriteLine($" Submitter: {ticket.Submitter}");
+                        Console.WriteLine($" Assgined: {ticket.Assgined}");
+                        Console.WriteLine($" Watchers: {watchers}");
+                        Console.WriteLine("\n");
+                    }
+                    else if (ticket is TaskTicket taskTicket) {
+                        Console.WriteLine($" TicketID: {ticket.TicketID}");
+                        Console.WriteLine($" Summary: {ticket.Summary}");
+                        Console.WriteLine($" Status: {ticket.TicketStatus}");
+                        Console.WriteLine($" Priority: {ticket.Priority}");
+                        Console.WriteLine($" Submitter: {ticket.Submitter}");
+                        Console.WriteLine($" Assgined: {ticket.Assgined}");
+                        Console.WriteLine($" Watchers: {watchers}");
+                        Console.WriteLine("\n");
+                    } 
+
                 }
                 Console.WriteLine("Press space to conintue... Press q to quit...");
                 var input = Console.ReadKey(true).Key;
