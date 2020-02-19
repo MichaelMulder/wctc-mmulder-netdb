@@ -25,6 +25,8 @@ namespace TicketingApp {
             var enhancementTicketsData = frE.Data;
             var taskTicketsData = frT.Data;
 
+           
+
             switch(readChoice) {
                 case 1: 
                     TicketList = TicketParser.dataToTicketList(bugTicketsData, TicketType.BugTicket);
