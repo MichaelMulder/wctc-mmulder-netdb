@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TicketingApp {
-    class Ticket {
+    abstract class Ticket {
         public int TicketID { get; set; }
         public string Summary { get; set; } 
         public TicketStatus TicketStatus { get; set; }

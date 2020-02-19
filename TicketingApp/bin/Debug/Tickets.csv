@@ -1,11 +1,11 @@
-TicketID, Summary, Status, Priority, Submitter, Assigned, Watching
-1,This is a bug ticket,Open,High,Drew Kjell,Jane Doe,Drew Kjell|John Smith|Bill Jones
-2,make pizza,Open,Low,Joe Blow,Dr.Shelly,Billy
-3,get the kids,Open,High,John,Karen,Jugde
-4,Take out garbage,Closed,low,Billy's Mom,Billy,Billy's Father
-5,write an essay,Open,High,Teacher,Billy,Billy's Parents
-6,This is a Test,Open,High,Michael,Michael,Michael|Mulder
-7,Test123,Open,High,me,me,me
-8,tesw,Open,High,asdf,asdf,asdf
-9,test,Open,High,Me,ME,ME
-10,Test,Pending,Low,mE,Md,adsf;kj
+TicketID, Summary, Status, Priority, Submitter, Assigned, Watching, Severity
+1,This is a bug ticket,Open,High,Drew Kjell,Jane Doe,Drew Kjell|John Smith|Bill Jones,Minor
+2,make pizza,Open,Low,Joe Blow,Dr.Shelly,Billy,Major
+3,get the kids,Open,High,John,Karen,Jugde,Major
+4,Take out garbage,Closed,low,Billy's Mom,Billy,Billy's Father,Critical
+5,write an essay,Open,High,Teacher,Billy,Billy's Parents,Critical
+6,This is a Test,Open,High,Michael,Michael,Michael|Mulder,Minor
+7,Test123,Open,High,me,me,me,Major
+8,tesw,Open,High,asdf,asdf,asdf,Major
+9,test,Open,High,Me,ME,ME,Critical
+10,Test,Pending,Low,mE,Md,adsf;kj,Major
