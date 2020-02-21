@@ -8,6 +8,7 @@ namespace TicketingApp {
     enum Severity {
         Minor,
         Major,
-        Critial
+        Critial,
+        Error
     }
 }

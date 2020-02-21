@@ -37,5 +37,9 @@ namespace TicketingApp {
             return ticketList.FindAll(t => t.TicketStatus.Equals(status));
         }
 
-    }
+        // TODO Implment search for each ticket type 
+        // May have to need a ticket search unqine for each kind of ticket
+        // Unsure of how to solve this currently
+
+    } 
 }

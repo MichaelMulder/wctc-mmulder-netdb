@@ -53,13 +53,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BugTicket.cs" />
+    <Compile Include="BugTicketState.cs" />
     <Compile Include="CsvFileReader.cs" />
     <Compile Include="CsvFileWriter.cs" />
+    <Compile Include="EnhacementTicketState.cs" />
     <Compile Include="EnhancementTicket.cs" />
     <Compile Include="IfileReader.cs" />
     <Compile Include="IfileWriter.cs" />
+    <Compile Include="IParseStrategy.cs" />
     <Compile Include="ISearchStrategy.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="ParseContext.cs" />
+    <Compile Include="ParseStratagies.cs" />
     <Compile Include="Priority.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,14 +72,18 @@
     <Compile Include="SearchStratagies.cs" />
     <Compile Include="Severity.cs" />
     <Compile Include="TaskTicket.cs" />
+    <Compile Include="TaskTicketState.cs" />
     <Compile Include="Ticket.cs" />
-    <Compile Include="TicketManager.cs" />
+    <Compile Include="TicketContext.cs" />
+    <Compile Include="TicketState.cs" />
     <Compile Include="TicketStatus.cs" />
-    <Compile Include="TicketType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Enhancements.csv" />
     <None Include="packages.config" />
+    <None Include="Task.csv" />
+    <None Include="Tickets.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
