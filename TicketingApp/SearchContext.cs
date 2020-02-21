@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TicketingApp {
-    class SearchContex {
+    class SearchContext {
         public ISearchStrategy Strategy { get; set; }
 
-        public SearchContex() {
+        public SearchContext() {
 
         }
 
-        public SearchContex(ISearchStrategy strategy) {
+        public SearchContext(ISearchStrategy strategy) {
             this.Strategy = strategy;
         }
 
