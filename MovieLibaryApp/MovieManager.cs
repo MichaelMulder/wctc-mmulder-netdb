@@ -12,11 +12,12 @@ namespace MovieLibaryApp {
         public MovieManager(List<Movie> movieList) {
             this.movieList = movieList; 
         }
-        public static Movie dataLineToMovie(string[] dataLine) { 
-            var movie = new Movie();
-            movie.ID = int.Parse(dataLine[0]);
-            movie.Title = dataLine[1].ToLower();
-            movie.Genres = parseStringToMovieGenres(dataLine[2]);
+        public static Movie dataLineToMovie(string[] dataLine) {
+            var movie = new Movie {
+                ID = int.Parse(dataLine[0]),
+                Title = dataLine[1].ToLower(),
+                Genres = parseStringToMovieGenres(dataLine[2])
+            };
             return movie;
         }
 
