@@ -35,11 +35,26 @@ namespace TicketingApp {
         public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) {
             TicketStatus status = Enum.TryParse(searchTerm, out status) ? status : TicketStatus.Error;
             return ticketList.FindAll(t => t.TicketStatus.Equals(status));
-        }
-
+        } 
         // TODO Implment search for each ticket type 
-        // May have to need a ticket search unqine for each kind of ticket
-        // Unsure of how to solve this currently
+        // May have to need a ticket search unqine for each kind of ticket 
+    }
 
-    } 
+    //class SeverityStrategy : ISearchStrategy {
+    //    public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) {
+            
+    //        Severity severity = Enum.TryParse(searchTerm, out severity) ? severity : Severity.Error; 
+    //        return ticketList.FindAll(t => t.Severity.Equals(severity));
+    //    } 
+
+    //} 
+    //class SoftwareStrategy : ISearchStrategy {
+    //    public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) {
+    //        Severity severity = Enum.TryParse(searchTerm, out severity) ? severity : Severity.Error; 
+    //        return ticketList.FindAll(t => t.TicketStatus.Equals(severity));
+    //    } 
+
+    //}
+
+
 }
