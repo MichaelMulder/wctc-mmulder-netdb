@@ -9,9 +9,9 @@ namespace TicketingApp {
     class Program {
         static void Main(string[] args) {
             int choice = 0;
-            string bugTicketsFile = "Tickets.csv";
-            string enhancmentTicketsFile = "Enhancements.csv";
-            string TaskTicketsFile = "Task.csv";
+            string bugTicketsFile = AppDomain.CurrentDomain.BaseDirectory + "Tickets.csv";
+            string enhancmentTicketsFile = AppDomain.CurrentDomain.BaseDirectory + "Enhancements.csv";
+            string TaskTicketsFile = AppDomain.CurrentDomain.BaseDirectory + "Task.csv";
 
             while (choice != 4) {
                 Console.WriteLine(Menu.displayTicketSelectionMenu());
