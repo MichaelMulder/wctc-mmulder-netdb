@@ -73,6 +73,8 @@ namespace TicketingApp {
                                     Severity = Enum.TryParse(sSeverity, out Severity severity) ? severity : Severity.Error 
                                 };
 
+                                state.TicketList.Add(newTicket);
+
                                 context.Write(newTicket, bugTicketsFile);
 
                                 break;
@@ -145,6 +147,9 @@ namespace TicketingApp {
                                     Estimate = estimate.ToLower()
                                 };
 
+
+                                state.TicketList.Add(newETicket);
+
                                 context.Write(newETicket, enhancmentTicketsFile); 
 
                                 break;
@@ -212,6 +217,8 @@ namespace TicketingApp {
                                     DueDate = dueDate.ToLower()
                                 };
 
+
+                                state.TicketList.Add(newTaskTicket);
                                 context.Write(newTaskTicket, TaskTicketsFile); 
 
                                 break;
