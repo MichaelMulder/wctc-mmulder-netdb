@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TicketingApp {
+namespace TicketingApp.TicketTypes {
     class BugTicket : Ticket {
         public Severity Severity { get; set; } 
     }

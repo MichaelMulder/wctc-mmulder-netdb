@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TicketingApp.TicketTypes;
 
-namespace TicketingApp {
+namespace TicketingApp.Strategies {
     interface IParseStrategy {
         List<Ticket> ParseDataForTickets(List<string[]> data);
 

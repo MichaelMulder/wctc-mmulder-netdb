@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicketingApp {
+namespace TicketingApp.FileManager {
     interface IfileWriter { 
         void writeToFile(string[] dataLine, string fileName);
     }
