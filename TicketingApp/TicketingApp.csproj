@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>TicketingApp</RootNamespace>
     <AssemblyName>TicketingApp</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -52,35 +52,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BugTicket.cs" />
-    <Compile Include="BugTicketState.cs" />
-    <Compile Include="CsvFileReader.cs" />
-    <Compile Include="CsvFileWriter.cs" />
-    <Compile Include="EnhacementTicketState.cs" />
-    <Compile Include="EnhancementTicket.cs" />
-    <Compile Include="IfileReader.cs" />
-    <Compile Include="IfileWriter.cs" />
-    <Compile Include="IParseStrategy.cs" />
-    <Compile Include="ISearchStrategy.cs" />
+    <Compile Include="TicketTypes\BugTicket.cs" />
+    <Compile Include="States\BugTicketState.cs" />
+    <Compile Include="FileManager\CsvFileReader.cs" />
+    <Compile Include="FileManager\CsvFileWriter.cs" />
+    <Compile Include="States\EnhacementTicketState.cs" />
+    <Compile Include="TicketTypes\EnhancementTicket.cs" />
+    <Compile Include="FileManager\IfileReader.cs" />
+    <Compile Include="FileManager\IfileWriter.cs" />
+    <Compile Include="Strategies\IParseStrategy.cs" />
+    <Compile Include="Strategies\ISearchStrategy.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="ParseContext.cs" />
-    <Compile Include="ParseStratagies.cs" />
-    <Compile Include="Priority.cs" />
+    <Compile Include="Strategies\ParseContext.cs" />
+    <Compile Include="Strategies\ParseStratagies.cs" />
+    <Compile Include="TicketTypes\Priority.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchContext.cs" />
-    <Compile Include="SearchStratagies.cs" />
-    <Compile Include="Severity.cs" />
-    <Compile Include="TaskTicket.cs" />
-    <Compile Include="TaskTicketState.cs" />
-    <Compile Include="Ticket.cs" />
-    <Compile Include="TicketContext.cs" />
-    <Compile Include="TicketState.cs" />
-    <Compile Include="TicketStatus.cs" />
+    <Compile Include="Strategies\SearchContext.cs" />
+    <Compile Include="Strategies\SearchStratagies.cs" />
+    <Compile Include="TicketTypes\Severity.cs" />
+    <Compile Include="TicketTypes\TaskTicket.cs" />
+    <Compile Include="States\TaskTicketState.cs" />
+    <Compile Include="TicketTypes\Ticket.cs" />
+    <Compile Include="States\TicketContext.cs" />
+    <Compile Include="States\TicketState.cs" />
+    <Compile Include="TicketTypes\TicketStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Enhancements.csv" />
+    <Content Include="Enhancements.csv" />
     <None Include="packages.config" />
     <None Include="Task.csv" />
     <None Include="Tickets.csv" />

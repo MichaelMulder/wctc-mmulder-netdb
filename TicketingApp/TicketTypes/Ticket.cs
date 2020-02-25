@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicketingApp {
+namespace TicketingApp.TicketTypes {
     abstract class Ticket {
         public int TicketID { get; set; }
         public string Summary { get; set; } 

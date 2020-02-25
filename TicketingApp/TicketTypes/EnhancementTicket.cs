@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicketingApp {
+namespace TicketingApp.TicketTypes {
     class EnhancementTicket : Ticket {
         public string Software { get; set; }
         public decimal Cost { get; set; }

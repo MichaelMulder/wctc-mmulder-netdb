@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TicketingApp.TicketTypes;
 
 namespace TicketingApp {
     interface ISearchStrategy {
