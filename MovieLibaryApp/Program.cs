@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using System.IO;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 using System.Linq;
 =======
 >>>>>>> 48de221... Ported over weekend work from laptob with core, added search functions
 =======
 using System.Linq;
 >>>>>>> 40a474f... Fixed file IO, refactored movieMethods to Movie Manager
+=======
+using System.Linq;
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
 
 namespace MovieLibaryApp
 {
  class Program {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
 
         static void Main(string[] args) {
             int choice = 0;
@@ -32,6 +39,9 @@ namespace MovieLibaryApp
 
             var movieM = new MovieManager(movieList);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
             while (choice != 3) {
 
                 Console.WriteLine("1) Search movies");
@@ -149,6 +159,7 @@ namespace MovieLibaryApp
                     break;
                 } 
             }
+<<<<<<< HEAD
 =======
 =======
 
@@ -316,6 +327,8 @@ namespace MovieLibaryApp
 >>>>>>> 48de221... Ported over weekend work from laptob with core, added search functions
 =======
 >>>>>>> 40a474f... Fixed file IO, refactored movieMethods to Movie Manager
+=======
+>>>>>>> 167b1ed7ec544c114ee35d9238c1f516a4be6f41
         }
     }
 
