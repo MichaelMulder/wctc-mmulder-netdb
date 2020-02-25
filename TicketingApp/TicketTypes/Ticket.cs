@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicketingApp {
-    class Ticket {
+namespace TicketingApp.TicketTypes {
+    abstract class Ticket {
         public int TicketID { get; set; }
         public string Summary { get; set; } 
         public TicketStatus TicketStatus { get; set; }
