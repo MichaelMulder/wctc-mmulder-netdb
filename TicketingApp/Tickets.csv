@@ -9,5 +9,3 @@ TicketID, Summary, Status, Priority, Submitter, Assigned, Watching, Severity
 8,tesw,Open,High,asdf,asdf,asdf,Major
 9,test,Open,High,Me,ME,ME,Critical
 10,Test,Pending,Low,mE,Md,adsf;kj,Major
-11,test,Open,High,me,me,me,Minor
-12,test,Open,High,asdf,adf,daf,Error 
