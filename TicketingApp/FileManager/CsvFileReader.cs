@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 
-namespace TicketingApp {
+namespace TicketingApp.FileManager {
     class CSVFileReader : IfileReader { 
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private bool headersAvaliable;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicketingApp {
+namespace TicketingApp.FileManager {
     class CSVFileWriter : IfileWriter { 
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         public void writeToFile(string[] dataLine, string fileName) {

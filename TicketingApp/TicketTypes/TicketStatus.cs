@@ -1,4 +1,4 @@
-﻿namespace TicketingApp {
+﻿namespace TicketingApp.TicketTypes {
     enum TicketStatus {
         Open,
         Closed,
