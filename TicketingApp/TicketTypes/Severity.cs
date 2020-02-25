@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicketingApp {
-    interface IfileWriter { 
-        void writeToFile(string[] dataLine, string fileName);
+namespace TicketingApp.TicketTypes {
+    enum Severity {
+        Minor,
+        Major,
+        Critial,
+        Error
     }
 }
