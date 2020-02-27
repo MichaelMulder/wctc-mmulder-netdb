@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace TicketingApp
 {
     interface ICommand {
+
         void Execucte(); 
     }
 }

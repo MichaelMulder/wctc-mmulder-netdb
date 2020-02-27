@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleProgram.cs" />
     <Compile Include="ReadCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="SearchCommand.cs" />
