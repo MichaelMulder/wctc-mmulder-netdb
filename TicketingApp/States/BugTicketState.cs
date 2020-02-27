@@ -32,37 +32,37 @@ namespace TicketingApp.States {
 
             switch(searchChoice) { 
                 case 1: 
-                    Console.WriteLine("Enter a Summary:");
+                    Menu.displayMessage("Enter a Summary:");
                     SearchContext.Strategy = new SummaryStrategy();
-                    var searchSummary = Console.ReadLine();
+                    var searchSummary = Menu.getStringInput();
                     return SearchContext.DoSearch(searchSummary, ticketList);
                 case 2: 
-                    Console.WriteLine("Enter a Satus(Open, Closed, Pending, Resolved):");
+                    Menu.displayMessage("Enter a Satus(Open, Closed, Pending, Resolved):");
                     SearchContext.Strategy = new StatusStrategy();
-                    var searchStatus = Console.ReadLine(); 
+                    var searchStatus = Menu.getStringInput(); 
                     return SearchContext.DoSearch(searchStatus, ticketList);
                 case 3: 
-                    Console.WriteLine("Enter a Priority(High, Medium, Low):"); 
+                    Menu.displayMessage("Enter a Priority(High, Medium, Low):"); 
                     SearchContext.Strategy = new PriorityStrategy();
-                    var searchPriority = Console.ReadLine();
+                    var searchPriority = Menu.getStringInput();
                     return SearchContext.DoSearch(searchPriority, ticketList);
                 case 4: 
-                    Console.WriteLine("Enter a Summiter:");
+                    Menu.displayMessage("Enter a Summiter:");
                     SearchContext.Strategy = new SubmitterStrategy();
-                    var searchSubmitter = Console.ReadLine(); 
+                    var searchSubmitter = Menu.getStringInput(); 
                     return SearchContext.DoSearch(searchSubmitter, ticketList);
                 case 5: 
-                    Console.WriteLine("Enter an Assigned:"); 
+                    Menu.displayMessage("Enter an Assigned:"); 
                     SearchContext.Strategy = new AssginedStrategy();
-                    var searchAssigned = Console.ReadLine();
+                    var searchAssigned = Menu.getStringInput();
                     return SearchContext.DoSearch(searchAssigned, ticketList);
                 case 6: 
-                    Console.WriteLine("Enter a Watcher:"); 
+                    Menu.displayMessage("Enter a Watcher:"); 
                     SearchContext.Strategy = new WatcherStrategy();
-                    var searchWatcher = Console.ReadLine();
+                    var searchWatcher = Menu.getStringInput();
                     return SearchContext.DoSearch(searchWatcher, ticketList);
                 default: 
-                    Console.WriteLine("Please enter a number 1-7");
+                    Menu.displayMessage("Please enter a number 1-7");
                     return ticketList;
             }
 

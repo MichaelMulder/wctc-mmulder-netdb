@@ -8,6 +8,12 @@ using TicketingApp.States;
 
 namespace TicketingApp {
     class Menu {
+        public static void displayMessage(string message) {
+            Console.WriteLine(message);
+        }
+        public static string getStringInput() {
+            return Console.ReadLine();
+        }
         public static string displayTicketSelectionMenu() {
             var menu = "\n 1) Bug Tickets" +
                 "\n 2) Enhacment Tickets" +
@@ -83,7 +89,8 @@ namespace TicketingApp {
                 Severity = Enum.TryParse(sSeverity, out Severity severity) ? severity : Severity.Error
             };
             return newTicket;
-        }
+        } 
+
         public static EnhancementTicket GetEnhancementTicket(TicketState state) {
 
             var listLength = state.TicketList.Count;
