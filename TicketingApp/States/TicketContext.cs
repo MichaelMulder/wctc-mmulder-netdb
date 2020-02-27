@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicketingApp.TicketTypes;
+using TicketingApp.Strategies;
 
-namespace TicketingApp {
+namespace TicketingApp.States {
     class TicketContext {
         private TicketState state = null;
 

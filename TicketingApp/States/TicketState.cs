@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using TicketingApp.TicketTypes;
+using TicketingApp.Strategies;
 
-namespace TicketingApp {
+namespace TicketingApp.States {
     abstract class TicketState {
         protected TicketContext context;
         public List<Ticket> TicketList {get; set;}
