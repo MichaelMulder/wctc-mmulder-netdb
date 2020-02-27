@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicketingApp.TicketTypes;
 
-namespace TicketingApp {
+namespace TicketingApp.Strategies {
     class SearchContext {
         public ISearchStrategy Strategy { get; set; }
 

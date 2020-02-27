@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace TicketingApp {
+using TicketingApp.TicketTypes;
+namespace TicketingApp.Strategies {
     class SummaryStrategy : ISearchStrategy {
         public List<Ticket> Search(string searchTerm, List<Ticket> ticketList) { 
             return ticketList.FindAll(t => t.Summary.StartsWith(searchTerm.ToLower()));

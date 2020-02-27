@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicketingApp.Strategies;
 using TicketingApp.FileManager;
+using TicketingApp.TicketTypes;
 
-namespace TicketingApp {
+namespace TicketingApp.States {
     class BugTicketState : TicketState {
 
         public BugTicketState() {

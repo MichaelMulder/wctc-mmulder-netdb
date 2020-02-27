@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TicketingApp.TicketTypes;
 
-namespace TicketingApp {
+namespace TicketingApp.Strategies {
     class ParseContext {
         public IParseStrategy Strategy { get; set; }
 

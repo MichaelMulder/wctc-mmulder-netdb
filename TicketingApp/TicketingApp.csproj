@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReadCommand.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="SearchCommand.cs" />
     <Compile Include="TicketTypes\BugTicket.cs" />
     <Compile Include="States\BugTicketState.cs" />
     <Compile Include="FileManager\CsvFileReader.cs" />
@@ -77,6 +80,7 @@
     <Compile Include="States\TicketContext.cs" />
     <Compile Include="States\TicketState.cs" />
     <Compile Include="TicketTypes\TicketStatus.cs" />
+    <Compile Include="WriteCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
