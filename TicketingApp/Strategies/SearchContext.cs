@@ -17,7 +17,7 @@ namespace TicketingApp.Strategies {
             this.Strategy = strategy;
         }
 
-        public List<Ticket> DoSearch(string searchTerm, List<Ticket> ticketList) {
+        public IEnumerable<Ticket> DoSearch(string searchTerm, List<Ticket> ticketList) {
             return this.Strategy.Search(searchTerm, ticketList);
         }
     }

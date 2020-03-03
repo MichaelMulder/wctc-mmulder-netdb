@@ -25,7 +25,7 @@ namespace TicketingApp.States {
             this.TicketList = ParseContext.DoParseForTickets(data);
         }
 
-        public override List<Ticket> SearchTickets(int searchChoice) {
+        public override IEnumerable<Ticket> SearchTickets(int searchChoice) {
             var ticketList = TicketList; 
             this.SearchContext = new SearchContext();
 
@@ -68,6 +68,9 @@ namespace TicketingApp.States {
 
         public override void WriteTicket(Ticket ticket, string fileName) {
             CSVFileWriter fw = new CSVFileWriter(); 
+
+
+            TicketList.Add(ticket);
 
             var dataline = ParseContext.DoParseForData(ticket);
 

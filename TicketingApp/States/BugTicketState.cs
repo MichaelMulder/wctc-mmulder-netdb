@@ -26,7 +26,7 @@ namespace TicketingApp.States {
             this.TicketList = ParseContext.DoParseForTickets(data); 
         }
 
-        public override List<Ticket> SearchTickets(int searchChoice) {
+        public override IEnumerable<Ticket> SearchTickets(int searchChoice) {
             this.SearchContext = new SearchContext();
             var ticketList = TicketList;
 
@@ -61,15 +61,22 @@ namespace TicketingApp.States {
                     SearchContext.Strategy = new WatcherStrategy();
                     var searchWatcher = Menu.getStringInput();
                     return SearchContext.DoSearch(searchWatcher, ticketList);
-                default: 
-                    Menu.displayMessage("Please enter a number 1-7");
+                case 7:
+                    Menu.displayMessage("Enter a Severity:");
+                    SearchContext.Strategy = new SeverityStrategy();
+                    var searchSeverity = Menu.getStringInput();
+                    return SearchContext.DoSearch(searchSeverity, ticketList);
+                default:
+                    Menu.displayMessage("Please enter a number 1-8");
                     return ticketList;
             }
 
         }
 
         public override void WriteTicket(Ticket ticket, string fileName) {
-            CSVFileWriter fw = new CSVFileWriter(); 
+            CSVFileWriter fw = new CSVFileWriter();
+
+            TicketList.Add(ticket);
 
             var dataline = ParseContext.DoParseForData(ticket);
 
