@@ -27,75 +27,25 @@ namespace TicketingApp {
                 TicketState state;
                 switch(choice) {
                     case 1:
-                        state = new BugTicketState(); 
-                        context.ChangeState(state); 
-                        context.Read(bugTicketsFile);
+                        state = new BugTicketState();
+                        Menu.TicketSwitcher(context, state, bugTicketsFile);
                         Menu.displayMessage(Menu.displayTicketMenu());
-                        int bugTicketChoice = Menu.getInput();
-                        switch(bugTicketChoice) {
-                            case 1:
-                                Menu.displayMessage(Menu.displaySearchMenu());
-                                int searchChoice = Menu.getInput();
-                                Menu.displayResults(context.Search(searchChoice));
-                                break;
-                            case 2:
-                                var newTicket = Menu.GetBugTicket(state);
-                                state.TicketList.Add(newTicket);
-
-                                context.Write(newTicket, bugTicketsFile);
-
-                                break;
-                            case 3:
-                                break;
-                        }
+                        Menu.TicketContextMenu(context, state, bugTicketsFile);
                         break;
                     case 2: 
                         state = new EnhacementTicketState(); 
-                        context.ChangeState(state);
-                        context.Read(enhancmentTicketsFile);
+                        Menu.TicketSwitcher(context, state, enhancmentTicketsFile);
                         Menu.displayMessage(Menu.displayTicketMenu());
-                        int eTicketChoice = Menu.getInput();
-                        switch(eTicketChoice) {
-                            case 1:
-                                Menu.displayMessage(Menu.displaySearchMenu());
-                                int searchChoice = Menu.getInput();
-                                Menu.displayResults(context.Search(searchChoice));
-                                break;
-                            case 2:
-                                var newETicket = Menu.GetEnhancementTicket(state);
-                                state.TicketList.Add(newETicket);
-
-                                context.Write(newETicket, enhancmentTicketsFile); 
-
-                                break;
-                            case 3:
-                                break;
-                        }
+                        Menu.TicketContextMenu(context, state, enhancmentTicketsFile);
                         break;
                     case 3: 
                         state = new TaskTicketState(); 
-                        context.ChangeState(state);
-                        context.Read(TaskTicketsFile);
-                        Menu.displayMessage(Menu.displayTicketMenu());
-                        int taskTicketChoice = Menu.getInput();
-                        switch(taskTicketChoice) {
-                            case 1:
-                                Menu.displayMessage(Menu.displaySearchMenu());
-                                int searchChoice = Menu.getInput();
-                                Menu.displayResults(context.Search(searchChoice));
-                                break;
-                            case 2:
-                                var newTaskTicket = Menu.GetTaskTicket(state);
-                                state.TicketList.Add(newTaskTicket);
-                                context.Write(newTaskTicket, TaskTicketsFile); 
-
-                                break;
-                            case 3:
-                                break;
-                        }
+                        Menu.TicketSwitcher(context, state, TaskTicketsFile);
+                        Menu.displayMessage(Menu.displayTicketMenu()); 
+                        Menu.TicketContextMenu(context, state, TaskTicketsFile);
                         break;
                     case 4:
-                        Environment.Exit(-1);
+                        Environment.Exit(-2);
                         break;
                 }
 

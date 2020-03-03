@@ -146,7 +146,6 @@ namespace TicketingApp {
             };
             return newETicket;
         }
-
         public static TaskTicket GetTaskTicket(TicketState state) {
             var listLength = state.TicketList.Count;
 
@@ -193,7 +192,7 @@ namespace TicketingApp {
             };
             return newTaskTicket;
         }
-        public static void displayResults(List<Ticket> ticketList) {
+        public static void displayResults(IEnumerable<Ticket> ticketList) {
             int pageSize = 3, pageCounter = 0; 
             var ticketPage = ticketList.Take(pageSize).ToList();
             while (ticketPage.Count() > 0) {
@@ -249,5 +248,28 @@ namespace TicketingApp {
             }
 
         } 
+
+        public static void TicketContextMenu(TicketContext context, TicketState state, string fileName) { 
+            int choice = Menu.getInput();
+            switch(choice) {
+                case 1:
+                    Menu.displayMessage(Menu.displaySearchMenu()); 
+                    int searchChoice = Menu.getInput(); 
+                    Menu.displayResults(context.Search(searchChoice)); 
+                    break; 
+                case 2: 
+                    var newTicket = Menu.GetBugTicket(state); 
+                    context.Write(newTicket, fileName); 
+                    break; 
+                case 3: 
+                    break; 
+            } 
+        } 
+
+        public static void TicketSwitcher(TicketContext context, TicketState state, string fileName) {
+            context.ChangeState(state); 
+            context.Read(fileName); 
+        }
+
     }
 }

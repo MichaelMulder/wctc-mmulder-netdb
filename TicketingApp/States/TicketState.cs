@@ -17,7 +17,7 @@ namespace TicketingApp.States {
 
         public abstract void ReadTickets(string fileName);
 
-        public abstract List<Ticket> SearchTickets(int searchChoice);
+        public abstract IEnumerable<Ticket> SearchTickets(int searchChoice);
 
         public abstract void WriteTicket(Ticket ticket, string fileName);
     }

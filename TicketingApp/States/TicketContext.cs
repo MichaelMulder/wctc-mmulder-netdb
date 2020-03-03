@@ -26,7 +26,7 @@ namespace TicketingApp.States {
             this.state.ReadTickets(fileName);
         }
 
-        public List<Ticket> Search(int searchChoice) {
+        public IEnumerable<Ticket> Search(int searchChoice) {
             return this.state.SearchTickets(searchChoice);
         }
 
