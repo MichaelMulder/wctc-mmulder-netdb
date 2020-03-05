@@ -61,11 +61,15 @@ namespace TicketingApp.States {
                     var searchWatcher = Menu.getStringInput();
                     return SearchContext.DoSearch(searchWatcher, ticketList);
                 case 7:
-                    Menu.displayMessage("Enter a Severity:");
-                    SearchContext.Strategy = new SeverityStrategy(); 
-                    var searchSeverity = Menu.getStringInput();
-                    return SearchContext.DoSearch(searchSeverity, ticketList);
-
+                    Menu.displayMessage("Enter a Task Name:");
+                    SearchContext.Strategy = new TaskNameStrategy(); 
+                    var searchTask = Menu.getStringInput();
+                    return SearchContext.DoSearch(searchTask, ticketList);
+                case 8:
+                    Menu.displayMessage("Enter the due date");
+                    SearchContext.Strategy = new DueDateStrategy();
+                    var searchDue = Menu.getStringInput();
+                    return SearchContext.DoSearch(searchDue, ticketList);
                 default:
                     Menu.displayMessage("Please enter a number 1-8");
                     return ticketList;

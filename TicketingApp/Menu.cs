@@ -27,16 +27,47 @@ namespace TicketingApp {
                 "\n 3) Select a diffrent ticket type";
             return menu;
         }
-        public static string displaySearchMenu() {
-            var menu = "\n 1) Search by Summary"+
-            "\n 2) Search by Status" + 
+        public static string displayBugSearchMenu() {
+            var menu = "\n 1) Search by Summary" +
+            "\n 2) Search by Status" +
             "\n 3) Search by Priority" +
-            "\n 4) Search by Submitter" + 
-            "\n 5) Search by Assigned" + 
+            "\n 4) Search by Submitter" +
+            "\n 5) Search by Assigned" +
              "\n 6) Search by Watcher" +
-            "\n 7) Display all Tickets";
+            "\n 7) Search by Severity" +
+            "\n 8) Display all Tickets";
             return menu;
         }
+        public static string displayESearchMenu() {
+            var menu = "\n 1) Search by Summary" +
+            "\n 2) Search by Status" +
+            "\n 3) Search by Priority" +
+            "\n 4) Search by Submitter" +
+            "\n 5) Search by Assigned" +
+             "\n 6) Search by Watcher" +
+            "\n 7) Search by Software" +
+            "\n 8) Search by Cost" + 
+            "\n 9) Search by Reason" + 
+            "\n 10) Search by Estimate" +
+            "\n 11) Display all Tickets";
+            return menu;
+        }
+
+
+        public static string displayTaskSearchMenu() {
+            var menu = "\n 1) Search by Summary" +
+            "\n 2) Search by Status" +
+            "\n 3) Search by Priority" +
+            "\n 4) Search by Submitter" +
+            "\n 5) Search by Assigned" +
+             "\n 6) Search by Watcher" +
+            "\n 7) Search by Severity" +
+            "\n 8) Search by Task Name" +
+            "\n 9) Display all Tickets";
+            return menu;
+        }
+
+
 
         public static int getInput() {
             var input = Console.ReadLine();
@@ -253,7 +284,7 @@ namespace TicketingApp {
             int choice = Menu.getInput();
             switch(choice) {
                 case 1:
-                    Menu.displayMessage(Menu.displaySearchMenu()); 
+                    Menu.displayMessage(Menu.displaySearchMenu(state)); 
                     int searchChoice = Menu.getInput(); 
                     Menu.displayResults(context.Search(searchChoice)); 
                     break; 
@@ -264,7 +295,22 @@ namespace TicketingApp {
                 case 3: 
                     break; 
             } 
-        } 
+        }
+
+        private static string displaySearchMenu(TicketState state) {
+            if(state is BugTicketState) {
+                return Menu.displayBugSearchMenu();
+            }
+            else if(state is EnhacementTicketState) {
+                return Menu.displayESearchMenu();
+            }
+            else if(state is TaskTicketState) {
+                return Menu.displayTaskSearchMenu();
+            }
+            else {
+                return "Error unknown ticket state passed";
+            }
+        }
 
         public static void TicketSwitcher(TicketContext context, TicketState state, string fileName) {
             context.ChangeState(state); 
