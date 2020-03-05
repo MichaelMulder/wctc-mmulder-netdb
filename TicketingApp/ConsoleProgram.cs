@@ -20,7 +20,7 @@ namespace TicketingApp {
         }
         public void Run() {
             int choice = 0;
-            while (choice != 3) {
+            while (choice < 4) {
                 Menu.displayMessage(Menu.displayTicketSelectionMenu());
                 choice = Menu.getInput();
                 TicketContext context = new TicketContext();
@@ -45,7 +45,7 @@ namespace TicketingApp {
                         Menu.TicketContextMenu(context, state, TaskTicketsFile);
                         break;
                     case 4:
-                        Environment.Exit(-2);
+                        Environment.Exit(0);
                         break;
                 }
 

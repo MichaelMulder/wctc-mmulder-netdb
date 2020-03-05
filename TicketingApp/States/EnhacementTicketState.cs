@@ -60,8 +60,28 @@ namespace TicketingApp.States {
                     SearchContext.Strategy = new WatcherStrategy();
                     var searchWatcher = Menu.getStringInput();
                     return SearchContext.DoSearch(searchWatcher, ticketList);
+                case 7:
+                    Menu.displayMessage("Enter the software name:");
+                    SearchContext.Strategy = new SoftwareStrategy();
+                    var searchSoftware = Menu.getStringInput();
+                    return SearchContext.DoSearch(searchSoftware, ticketList);
+                case 8:
+                    Menu.displayMessage("Enter the cost:");
+                    SearchContext.Strategy = new CostStrategy();
+                    var searchCost = Menu.getStringInput();
+                    return SearchContext.DoSearch(searchCost, ticketList);
+                case 9:
+                    Menu.displayMessage("Enter the reason:");
+                    SearchContext.Strategy = new ReasonStrategy();
+                    var searchReason = Menu.getStringInput();
+                    return SearchContext.DoSearch(searchReason, ticketList);
+                case 10: 
+                    Menu.displayMessage("Enter the reason:");
+                    SearchContext.Strategy = new EstimateStrategy();
+                    var searchEstimate = Menu.getStringInput();
+                    return SearchContext.DoSearch(searchEstimate, ticketList);
                 default:
-                    Menu.displayMessage("Please enter a number 1-7");
+                    Menu.displayMessage("Please enter a number 1-11");
                     return ticketList;
             }
         }
