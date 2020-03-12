@@ -53,7 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\IDataStorage.cs" />
+    <Compile Include="Contexts\BloggingContext.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Program.cs" />

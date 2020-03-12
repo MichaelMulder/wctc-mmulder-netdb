@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleBlog {
-    class Post {
+namespace ConsoleBlog.Model {
+    public class Post { 
 
         public int PostID { get; set; }
 
@@ -13,7 +14,7 @@ namespace ConsoleBlog {
 
         public string Content { get; set; }
 
-        public int BlogId { get; set; }
+        public int BlogId { get; set; } 
 
         public Blog Blog { get; set; }
     }
