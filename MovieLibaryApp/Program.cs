@@ -1,12 +1,10 @@
 ﻿using System; 
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Linq; 
+namespace MovieLibaryApp {
 
-namespace MovieLibaryApp
-{
- class Program {
-
+ class Program { 
         static void Main(string[] args) {
             int choice = 0;
             string fileName = "movies.csv";
@@ -22,6 +20,7 @@ namespace MovieLibaryApp
             var movieList = MovieManager.dataToMovieList(data);
 
             var movieM = new MovieManager(movieList);
+
             while (choice != 3) {
 
                 Console.WriteLine("1) Search movies");
@@ -140,23 +139,6 @@ namespace MovieLibaryApp
                 } 
             }
         }
-        
-        static string[] movieToDataLine(Movie movie) {
-            var genres = string.Join("|", movie.Genres.ToArray());
-            string[] newDataLine = { movie.ID.ToString(), movie.Title, genres }; 
-            return newDataLine;
-        } 
-
-        static List<Movie> searchByName(string searchTerm, List<Movie> movieList) {
-            var results = movieList.FindAll(m => m.Title.StartsWith(searchTerm));
-            return results;
-        } 
-
-        static List<Movie> searchByGenre(MovieGenres genre, List<Movie> movieList) {
-            var results = movieList.FindAll(m => m.Genres.Contains(genre)); 
-            return results;
-        }
-
-    }
+   }
 
 }
