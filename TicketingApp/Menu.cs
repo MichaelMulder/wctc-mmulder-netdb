@@ -268,7 +268,7 @@ namespace TicketingApp {
                     } 
 
                 }
-                Console.WriteLine("Press space to conintue... Press q to quit...");
+                Console.WriteLine("Press space to continue... Press q to quit...");
                 var input = Console.ReadKey(true).Key;
                 if (input == ConsoleKey.Spacebar) {
                     pageCounter++;

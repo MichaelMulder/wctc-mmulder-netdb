@@ -1,6 +1,6 @@
 namespace ConsoleBlogCore.Menus {
-  enum displayTypes {
-    Console,
-    Web
-  }
+    enum displayTypes {
+        Console,
+        Web
+    }
 }
