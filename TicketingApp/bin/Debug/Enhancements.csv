@@ -1,2 +1,4 @@
 TicketID, Summary, Status, Priority, Submitter, Assigned, Watching, Software, Cost, Reason, Estimate
-1,blah,Open,low,blah,blah,blah,blah|blah,mySoft,4.99,blah,blah2,test,Open,High,test,test,me,est,10.00,testing,testing
+1,blah,Open,low,blah,blah,blah,blah|blah,mySoft,4.99,blah,blah
+2,test,Open,High,test,test,me,est,10.00,testing,testing
+3,test,Open,High,me,me,me,tss,100.00,as,adsf
