@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingApp", "TicketingAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieLibaryApp", "MovieLibaryApp\MovieLibaryApp.csproj", "{E108C1D0-A412-4494-97FD-5B879AD86C7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleBlog", "ConsoleBlog\ConsoleBlog.csproj", "{81319D1A-667C-49E0-86CB-793294B4F9C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleBlogCore", "ConsoleBlogCore\ConsoleBlogCore.csproj", "{81319D1A-667C-49E0-86CB-793294B4F9C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

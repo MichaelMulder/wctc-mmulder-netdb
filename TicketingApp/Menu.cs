@@ -288,9 +288,18 @@ namespace TicketingApp {
                     int searchChoice = Menu.getInput(); 
                     Menu.displayResults(context.Search(searchChoice)); 
                     break; 
-                case 2: 
-                    var newTicket = Menu.GetBugTicket(state); 
-                    context.Write(newTicket, fileName); 
+                case 2:
+                    if (state is BugTicketState) {
+                        var newTicket = Menu.GetBugTicket(state);
+                        context.Write(newTicket, fileName);
+                    } else if (state is EnhacementTicketState) {
+                        var newTicket = GetEnhancementTicket(state);
+                        context.Write(newTicket, fileName);
+                    } else if (state is TaskTicketState) {
+                        var newTicket = GetTaskTicket(state);
+                        context.Write(newTicket, fileName);
+                    }
+                    
                     break; 
                 case 3: 
                     break; 
