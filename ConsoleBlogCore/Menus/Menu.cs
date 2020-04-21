@@ -158,49 +158,28 @@ namespace ConsoleBlogCore.Menus {
         }
 
 
-        public void bloggerMenu(Blogger blogger) {
+        public void bakerMenu(IMakeBread baker) {
             this.displayMessage(Menu.displayBloggerMenu());
-            int bloggerChoice = 0;
-            bloggerChoice = this.getIntInput();
-            switch(bloggerChoice) {
+            int bakerChoice = 0;
+            bakerChoice = this.getIntInput();
+            switch(bakerChoice) {
                 case 1:
-                    blogger.Browse();
+                    baker.Browse();
                 break;
                 case 2:
-                    blogger.Add();
+                    baker.Add();
                 break;
                 case 3:
-                    blogger.Edit();
+                    baker.Edit();
                 break;
                 case 4:
-                    blogger.Delete();
+                    baker.Delete();
                 break;
                 case 5:
                 break;
             }
         }
 
-        public void posterMenu(Poster poster) {
-          this.displayMessage(Menu.displayPosterMenu());
-          int posterChoice = 0;
-          posterChoice = this.getIntInput();
-            switch(posterChoice) {
-              case 1:
-                poster.Browse();
-              break;
-              case 2:
-                poster.Add();
-              break;
-              case 3:
-                poster.Edit();
-              break;
-              case 4:
-                poster.Delete();
-              break;
-              case 5:
-              break;
-            }
-        }
 
         public Blog CreateBlog() {
             this.displayMessage("Enter a name"); 

@@ -3,7 +3,7 @@
 namespace ConsoleBlogCore {
   class Program {
     static void Main(string[] args) {
-       ConsoleMenu App = new ConsoleMenu(); 
+       ConsoleDisplay App = new ConsoleDisplay(); 
        App.Run();
     }
   }

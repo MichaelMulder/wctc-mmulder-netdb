@@ -2,7 +2,7 @@ using System;
 using ConsoleBlogCore.Bakers;
 
 namespace ConsoleBlogCore.Menus {
-    class ConsoleMenu {
+    class ConsoleDisplay {
         public void Run() {
             int choice = 0; 
             while (choice < 4) { 
@@ -13,10 +13,10 @@ namespace ConsoleBlogCore.Menus {
                 Poster poster = new Poster(menu); 
                 switch (choice) { 
                     case 1: 
-                        menu.bloggerMenu(blogger); 
+                        menu.bakerMenu(blogger); 
                     break;  
                     case 2: 
-                        menu.posterMenu(poster); 
+                        menu.bakerMenu(poster); 
                     break; 
                     case 3:
                         Environment.Exit(0);
