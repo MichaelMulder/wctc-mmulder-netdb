@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,71 +8,72 @@ using ConsoleBlogCore.Model;
 
 namespace ConsoleBlogCore.Bakers {
     class Poster : IMakeBread { 
-        private Menu Menu; 
-        public Poster(Menu menu) { 
+        private PostMenu Menu; 
+        public Poster(PostMenu menu) { 
             this.Menu = menu; 
         } 
         public void Add() { 
+            BlogMenu Menu = new BlogMenu();
             Blogger blogger = new Blogger(Menu);
-            var search = Menu.getSearchType();
+            var search = MenuHelpers.getSearchType();
             var blogFound = blogger.Find(search);
-            Menu.displayMessage($"Found {blogFound.Name}");
+            Console.WriteLine($"Found {blogFound.Name}");
             using (var db = new BloggingContext()) { 
-                var newPost = Menu.CreatePost(blogFound);
+                var newPost = this.Menu.CreatePost(blogFound);
                 var blog = db.Update(blogFound).Entity;
-                Menu.displayMessage($"Added {newPost.Title} to {blog.Name}");
+                Console.WriteLine($"Added {newPost.Title} to {blog.Name}");
                 blog.Posts.Add(newPost); 
                 db.SaveChanges(); 
             }
         } 
         public void Browse() { 
-            SearchTypes searchType = Menu.getSearchType();
+            SearchTypes searchType = MenuHelpers.getSearchType();
             Menu.displayPosts(Search(searchType));
         }
 
         public void Delete() {
-            SearchTypes searchType = Menu.getSearchType();
+            SearchTypes searchType = MenuHelpers.getSearchType();
             var postToDelete = Find(searchType);
-            Menu.displayMessage($"Are you sure you want to delete {postToDelete.Title}?");
-            Menu.displayMessage("1) YES \n" +
+            Console.WriteLine($"Are you sure you want to delete {postToDelete.Title}?");
+            Console.WriteLine("1) YES \n" +
                                 "2) NO");
 
-            var choice = Menu.getIntInput();
+            var choice = MenuHelpers.getIntInput();
             switch(choice) {
                 case 1:
-                    Menu.displayMessage("Deleting...");
+                    Console.WriteLine("Deleting...");
                     using(var db = new BloggingContext()) {
                         db.Posts.Remove(postToDelete);
                         db.SaveChanges();
                     }
                 break;
                 case 2:
-                    Menu.displayMessage("Exiting...");
+                    Console.WriteLine("Exiting...");
                 break;
             }
         }
 
         public void Edit() {
-            SearchTypes searchType = Menu.getSearchType();
+            SearchTypes searchType = MenuHelpers.getSearchType();
             var postToEdit = Find(searchType); 
-            Menu.displayMessage($"Found {postToEdit.Title}");
+            Console.WriteLine($"Found {postToEdit.Title}");
             using(var db = new BloggingContext()) {
                 int choice; 
-                Menu.displayMessage(Menu.displayPostEditMenu());
-                choice = Menu.getIntInput();
+                this.Menu.editMenu();
+                choice = MenuHelpers.getIntInput();
                 var editPost = db.Update(postToEdit).Entity;
                 switch(choice) {
                     case 1:
-                        Menu.displayMessage($"Enter a new title for {editPost.Title}");
-                        var newTitle = Menu.getStringInput(); 
-                        Menu.displayMessage($"Changing {editPost.Title} to {newTitle}");
+                        Console.WriteLine($"Enter a new title for {editPost.Title}");
+                        var newTitle = MenuHelpers.getStringInput(); 
+                        Console.WriteLine($"Changing {editPost.Title} to {newTitle}");
                         editPost.Title = newTitle;
                         db.SaveChanges();
                     break;
                     case 2:
-                        Menu.displayMessage($"Enter a new Content for {editPost.Title}");
-                        var newContent = Menu.getStringInput(); 
-                        Menu.displayMessage($"Changing {editPost.Content} to {newContent}");
+                        Console.WriteLine($"Enter a new Content for {editPost.Title}");
+                        var newContent = MenuHelpers.getStringInput(); 
+                        Console.WriteLine($"Changing {editPost.Content} to {newContent}");
                         editPost.Content = newContent;
                         db.SaveChanges();
                     break;
@@ -101,8 +103,8 @@ namespace ConsoleBlogCore.Bakers {
             var postQuery = data.OfType<Post>();
             switch(search) {
                 case SearchTypes.SearchByBlogName:
-                    Menu.displayMessage("Enter a Blog Name"); 
-                    var blogName = Menu.getStringInput(); 
+                    Console.WriteLine("Enter a Blog Name"); 
+                    var blogName = MenuHelpers.getStringInput(); 
                     
                     var SearchByBlogName = postQuery
                         .Where(p => p.Blog.Name.Contains(blogName)) 
@@ -110,13 +112,13 @@ namespace ConsoleBlogCore.Bakers {
                     if(SearchByBlogName is Post) { 
                         return SearchByBlogName;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return postQuery.Single();
                     }
 
                 case SearchTypes.SearchByBlogId:
-                    Menu.displayMessage("Enter a Blog Id");
-                    var blogId = Menu.getIntInput();
+                    Console.WriteLine("Enter a Blog Id");
+                    var blogId = MenuHelpers.getIntInput();
 
                     var SearchByBlogId = postQuery
                         .Where(p => p.BlogId.Equals(blogId))
@@ -124,49 +126,49 @@ namespace ConsoleBlogCore.Bakers {
                     if(SearchByBlogId is Post) { 
                         return SearchByBlogId;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return postQuery.Single();
                     }
 
 
                 case SearchTypes.SearchByPostId:
-                    Menu.displayMessage("Enter a Post Id");
-                    var postId = Menu.getIntInput();
+                    Console.WriteLine("Enter a Post Id");
+                    var postId = MenuHelpers.getIntInput();
                     var SearchByPostId = postQuery
                         .Where(p => p.PostID.Equals(postId))
                         .FirstOrDefault();
                     if(SearchByPostId is Post) { 
                         return SearchByPostId;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return postQuery.Single();
                     } 
                 case SearchTypes.SearchByPostTitle: 
-                    Menu.displayMessage("Enter a Post Title");
-                    var postTitle = Menu.getStringInput();
+                    Console.WriteLine("Enter a Post Title");
+                    var postTitle = MenuHelpers.getStringInput();
                     var SearchByPostTitle = postQuery
                         .Where(p => p.Title.Contains(postTitle)) 
                         .FirstOrDefault();
                     if(SearchByPostTitle is Post) { 
                         return SearchByPostTitle;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return postQuery.Single();
                     } 
                 case SearchTypes.SearchByPostContent:
-                    Menu.displayMessage("Enter a Post Title");
-                    var postContent = Menu.getStringInput();
+                    Console.WriteLine("Enter a Post Title");
+                    var postContent = MenuHelpers.getStringInput();
                     var SearchByPostContent = postQuery
                         .Where(p => p.Content.Contains(postContent)) 
                         .FirstOrDefault();
                     if(SearchByPostContent is Post) { 
                         return SearchByPostContent;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return postQuery.Single();
                     }
                 case SearchTypes.SearchError:
-                    Menu.displayMessage("Could not Determine Search Type");
+                    Console.WriteLine("Could not Determine Search Type");
                     return postQuery.Single();
                 default:
                     return postQuery.Single();
@@ -177,67 +179,67 @@ namespace ConsoleBlogCore.Bakers {
             var blogQuery = data.OfType<Post>();
             switch(search) {
                 case SearchTypes.SearchByBlogName:
-                    Menu.displayMessage("Enter a Blog Name"); 
-                    var blogName = Menu.getStringInput(); 
+                    Console.WriteLine("Enter a Blog Name"); 
+                    var blogName = MenuHelpers.getStringInput(); 
                     
                     var SearchByBlogName = blogQuery
                         .Where(p => p.Blog.Name.Contains(blogName));
                     if(SearchByBlogName is IEnumerable<Post>) { 
                         return SearchByBlogName;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return blogQuery;
                     }
 
                 case SearchTypes.SearchByBlogId:
-                    Menu.displayMessage("Enter a Blog Id");
-                    var blogId = Menu.getIntInput();
+                    Console.WriteLine("Enter a Blog Id");
+                    var blogId = MenuHelpers.getIntInput();
 
                     var SearchByBlogId = blogQuery
                         .Where(p => p.BlogId.Equals(blogId));
                     if(SearchByBlogId is IEnumerable<Post>) { 
                         return SearchByBlogId;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return blogQuery;
                     }
 
 
                 case SearchTypes.SearchByPostId:
-                    Menu.displayMessage("Enter a Post Id");
-                    var postId = Menu.getIntInput();
+                    Console.WriteLine("Enter a Post Id");
+                    var postId = MenuHelpers.getIntInput();
                     var SearchByPostId = blogQuery
                         .Where(p => p.PostID.Equals(postId));
                     if(SearchByPostId is IEnumerable<Post>) { 
                         return SearchByPostId;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return blogQuery;
                     } 
                 case SearchTypes.SearchByPostTitle: 
-                    Menu.displayMessage("Enter a Post Title");
-                    var postTitle = Menu.getStringInput();
+                    Console.WriteLine("Enter a Post Title");
+                    var postTitle = MenuHelpers.getStringInput();
                     var SearchByPostTitle = blogQuery
                         .Where(p => p.Title.Contains(postTitle));
                     if(SearchByPostTitle is IEnumerable<Post>) { 
                         return SearchByPostTitle;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return blogQuery;
                     } 
                 case SearchTypes.SearchByPostContent:
-                    Menu.displayMessage("Enter a Post Title");
-                    var postContent = Menu.getStringInput();
+                    Console.WriteLine("Enter a Post Title");
+                    var postContent = MenuHelpers.getStringInput();
                     var SearchByPostContent = blogQuery
                         .Where(p => p.Content.Contains(postContent));
                     if(SearchByPostContent is IEnumerable<Post>) { 
                         return SearchByPostContent;
                     } else {
-                        Menu.displayMessage("Could not find blog");
+                        Console.WriteLine("Could not find blog");
                         return blogQuery;
                     }
                 case SearchTypes.SearchError:
-                    Menu.displayMessage("Could not Determine Search Type");
+                    Console.WriteLine("Could not Determine Search Type");
                     return blogQuery;
                 default:
                     return blogQuery;
